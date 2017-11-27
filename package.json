@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/pup/webquest/issues"
   },
-  "homepage": "https://github.com/pup/webquest#readme"
+  "homepage": "https://github.com/pup/webquest#readme",
+  "dependencies": {
+    "level": "2.0.1",
+    "mkdirp": "0.5.1",
+    "yargs": "10.0.3"
+  }
 }
