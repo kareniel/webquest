@@ -35,4 +35,4 @@ class WQ {
   }
 }
 
-module.exports = (...arg) => new WQ(...arg)
+module.exports = opts => new WQ(opts)
