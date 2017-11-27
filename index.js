@@ -5,7 +5,7 @@ const path = require('path')
 
 class WQ {
   constructor (opts = {}) {
-    opts.pkg = require(path.join(__dirname, 'package.json'))
+    opts.pkg = require(path.join(process.cwd(), 'package.json'))
 
     if (!opts.name) 
       opts.name = opts.pkg.name
@@ -25,8 +25,7 @@ class WQ {
       .usage('heyy test')
       .argv
     
-    console.log('execute lol')
-    this.cleanup()
+    this.runServer()
   }
 
   cleanup () {
@@ -34,5 +33,7 @@ class WQ {
     this.appStorage.close()
   }
 }
+
+WQ.prototype.runServer = require('./lib/server')
 
 module.exports = opts => new WQ(opts)
