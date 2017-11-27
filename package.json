@@ -27,6 +27,8 @@
     "express": "4.16.2",
     "level": "2.0.1",
     "mkdirp": "0.5.1",
+    "sheetify": "6.2.0",
+    "tachyons": "4.9.0",
     "yargs": "10.0.3"
   }
 }
