@@ -1,0 +1,24 @@
+{
+  "name": "webquest",
+  "version": "0.0.1",
+  "description": "questing for the interweb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pup/webquest.git"
+  },
+  "keywords": [
+    "quest",
+    "workshopper",
+    "choo"
+  ],
+  "author": "Olivia Hugger <olivia@fastmail.com>",
+  "license": "AGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/pup/webquest/issues"
+  },
+  "homepage": "https://github.com/pup/webquest#readme"
+}
