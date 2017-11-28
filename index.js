@@ -9,15 +9,25 @@ class WQ {
 
     if (!opts.name) 
       opts.name = opts.pkg.name
-    
+    if (!opts.exerciseDir)
+      opts.exerciseDir = path.join(process.cwd(), 'exercises')
     opts.version = opts.pkg.version
 
     this.opts = opts
     this.exercises = this.opts.exercises || []
+    this.firstTime = false
     let storagePath = path.join((process.env.HOME || process.env.USERPROFILE), '.webquest')
     mkdirp.sync(storagePath)
     this.globalStorage = level(path.join(storagePath, 'webquest'))
     this.appStorage = level(path.join(storagePath, this.opts.name))
+
+    this.appStorage.get('firstTime')
+      .catch(err => {
+        if (err.type === 'NotFoundError') {
+          this.firstTime = true
+          return this.appStorage.put('firstTime', true)
+        }
+      })
   }
 
   execute (args) {
