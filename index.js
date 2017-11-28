@@ -13,7 +13,7 @@ class WQ {
     opts.version = opts.pkg.version
 
     this.opts = opts
-    this.exercises = []
+    this.exercises = this.opts.exercises || []
     let storagePath = path.join((process.env.HOME || process.env.USERPROFILE), '.webquest')
     mkdirp.sync(storagePath)
     this.globalStorage = level(path.join(storagePath, 'webquest'))
