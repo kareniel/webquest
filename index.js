@@ -31,8 +31,11 @@ class WQ {
   }
 
   execute (args) {
-    let argv = yargs(args)
-      .usage('heyy test')
+    this.argv = yargs(args)
+      .option('n', {
+        boolean: true,
+        describe: `don't automatically open a browser tab`
+      })
       .argv
     
     this.runServer()
