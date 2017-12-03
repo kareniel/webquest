@@ -1,6 +1,7 @@
 const yargs = require('yargs')
 const level = require('level')
 const mkdirp = require('mkdirp')
+const fs = require('fs-extra')
 const path = require('path')
 
 class WQ {
@@ -30,6 +31,16 @@ class WQ {
       })
   }
 
+  addExercise (exercise) {
+    this.loadExercise(exercise)
+  }
+
+  addExercises (exercises) {
+    exercises.forEach(async exercise => {
+      await this.loadExercise(exercise)
+    })
+  }
+
   execute (args) {
     this.argv = yargs(args)
       .option('n', {
@@ -48,5 +59,6 @@ class WQ {
 }
 
 WQ.prototype.runServer = require('./lib/server')
+WQ.prototype.loadExercise = require('./lib/loadExercise')
 
 module.exports = opts => new WQ(opts)
