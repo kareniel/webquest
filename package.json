@@ -31,6 +31,8 @@
     "level": "2.0.1",
     "mkdirp": "0.5.1",
     "opn": "5.1.0",
+    "remark": "8.0.0",
+    "remark-html": "6.0.1",
     "sheetify": "6.2.0",
     "slugify": "1.2.6",
     "tachyons": "4.9.0",
