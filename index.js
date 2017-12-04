@@ -13,6 +13,7 @@ class WQ {
     if (!opts.exerciseDir)
       opts.exerciseDir = path.join(process.cwd(), 'exercises')
     opts.version = opts.pkg.version
+    opts.dir = __dirname
 
     this.opts = opts
     this.exercises = this.opts.exercises || []
