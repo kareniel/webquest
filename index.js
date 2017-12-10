@@ -32,11 +32,11 @@ class WQ {
       })
   }
 
-  addExercise (exercise) {
-    this.loadExercise(exercise)
+  async addExercise (exercise) {
+    await this.loadExercise(exercise)
   }
 
-  addExercises (exercises) {
+  async addExercises (exercises) {
     exercises.forEach(async exercise => {
       await this.loadExercise(exercise)
     })
