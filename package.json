@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/pup/webquest#readme",
   "dependencies": {
+    "body-parser": "1.18.2",
     "boxen": "1.2.2",
     "browserify-middleware": "8.0.0",
     "choo": "6.6.0",
