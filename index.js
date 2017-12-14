@@ -44,9 +44,13 @@ class WQ {
 
   execute (args) {
     this.argv = yargs(args)
-      .option('n', {
+      .option('t', {
         boolean: true,
         describe: `don't automatically open a browser tab`
+      })
+      .option('b', {
+        boolean: true,
+        describe: `don't use browserify in the included server`
       })
       .argv
     
