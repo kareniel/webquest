@@ -48,10 +48,6 @@ class WQ {
         boolean: true,
         describe: `don't automatically open a browser tab`
       })
-      .option('b', {
-        boolean: true,
-        describe: `don't use browserify in the included server`
-      })
       .argv
     
     this.runServer()
