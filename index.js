@@ -1,17 +1,18 @@
 const yargs = require('yargs')
 const level = require('level')
 const mkdirp = require('mkdirp')
-const fs = require('fs-extra')
 const path = require('path')
 
 class WQ {
   constructor (opts = {}) {
     opts.pkg = require(path.join(process.cwd(), 'package.json'))
 
-    if (!opts.name) 
+    if (!opts.name) {
       opts.name = opts.pkg.name
-    if (!opts.exerciseDir)
+    }
+    if (!opts.exerciseDir) {
       opts.exerciseDir = path.join(process.cwd(), 'exercises')
+    }
     opts.version = opts.pkg.version
     opts.dir = __dirname
 
@@ -49,7 +50,7 @@ class WQ {
         describe: `don't automatically open a browser tab`
       })
       .argv
-    
+
     this.runServer()
   }
 

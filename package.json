@@ -4,7 +4,7 @@
   "description": "questing for the interweb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard | snazzy"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,8 @@
     "yargs": "10.0.3"
   },
   "devDependencies": {
-    "choo-devtools": "2.2.0"
+    "choo-devtools": "2.2.0",
+    "snazzy": "7.0.0",
+    "standard": "10.0.3"
   }
 }
