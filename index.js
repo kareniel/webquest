@@ -24,11 +24,10 @@ class WQ {
     this.globalStorage = level(path.join(storagePath, 'webquest'))
     this.appStorage = level(path.join(storagePath, this.opts.name))
 
-    this.appStorage.get('firstTime')
+    this.appStorage.get('userDir')
       .catch(err => {
         if (err.type === 'NotFoundError') {
           this.firstTime = true
-          return this.appStorage.put('firstTime', true)
         }
       })
   }
