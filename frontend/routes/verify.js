@@ -18,25 +18,55 @@ module.exports = function (state, emit) {
       var ex = state.exercises.find(function (e) {
         return e.slug === state.params.slug
       })
+      emit(state.events.RESETMESSAGES)
       emit(state.events.VERIFY, [ex.name, state.verify.file])
+    }
+
+    function onRunClick () {
+
+    }
+
+    function onBackClick () {
+      emit(state.events.PUSHSTATE, '/')
     }
 
     var title = `verify or run ${exercise.name}`
     if (title !== state.title) {
+      emit(state.events.RESETVERIFY)
       emit(state.events.SETCURRENTDIR, state.userDir)
       emit(state.events.REFRESHDIRS, [state.currentDir, false])
       emit(state.events.DOMTITLECHANGE, title)
     }
 
-    var runComponent
-    if (state.verify.running || state.verify.done) {
+    var component
+    if (!state.verify.running && !state.verify.done && state.verify.file) {
+      component = html`
+        <div>
+          <div class="f1">
+            <pre class="dib">${path.basename(state.verify.file)}</pre>
+            selected
+            <small class="f5">(<a href="#" class="link blue" onclick=${onResetClick}>change</a>)</small>
+          </div>
+          <a 
+            class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer mr3" 
+            onclick=${onVerifyClick}>
+            verify
+          </a>
+          <a 
+            class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer" 
+            onclick=${onRunClick}>
+            run
+          </a>
+        </div>
+      `
+    } else if (state.verify.running || state.verify.done) {
       var statusMessage
       if (state.verify.success) {
         statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 green">You passed this exercise!</b>`
       } else {
         statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 red">You failed this exercise...</b>`
       }
-      runComponent = html`
+      component = html`
         <div>
           <ul class="list">
             ${state.verify.messages.map(function (message) {
@@ -48,24 +78,15 @@ module.exports = function (state, emit) {
             })}
           </ul>
           ${statusMessage}
-        </div>
-      `
-    }
-
-    let component
-    if (state.verify.file) {
-      component = html`
-        <div>
-          <div class="f1">
-            <pre class="dib">${path.basename(state.verify.file)}</pre>
-            selected
-            <small class="f5">(<a href="#" class="link blue" onclick=${onResetClick}>change</a>)</small>
-          </div>
-          ${runComponent}
+          <a 
+            class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer mr3" 
+            onclick=${onVerifyClick}>
+            verify again
+          </a>
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer" 
-            onclick=${onVerifyClick}>
-            verify
+            onclick=${onBackClick}>
+            back to exercise overview
           </a>
         </div>
       `

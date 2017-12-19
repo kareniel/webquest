@@ -24,7 +24,9 @@ module.exports = function (state, emitter) {
     SETUSERDIR: 'setUserDir',
     SELECTFILE: 'selectFile',
     CLEARSELECTEDFILE: 'clearSelectedFile',
-    VERIFY: 'verify'
+    VERIFY: 'verify',
+    RESETVERIFY: 'resetVerify',
+    RESETMESSAGES: 'resetMessages'
   })
 
   emitter.on(state.events.DOMCONTENTLOADED, function () {
@@ -100,5 +102,21 @@ function registerEmitters (state, emitter) {
         state.verify.done = true
         emitter.emit(state.events.RENDER)
       })
+  })
+
+  emitter.on(state.events.RESETVERIFY, function () {
+    state.verify = {
+      file: '',
+      running: false,
+      done: false,
+      messages: [],
+      success: false
+    }
+  })
+
+  emitter.on(state.events.RESETMESSAGES, function () {
+    state.verify.messages = []
+    state.verify.success = false
+    state.verify.done = false
   })
 }
