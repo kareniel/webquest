@@ -12,7 +12,7 @@ module.exports = function (state, emit) {
         ${state.exercises.map(function (exercise) {
           return html`
             <a class="link" href="/${exercise.slug}">
-              <div class="bg-dark-pink near-white pv3 ph3 w-100 grow pointer mb4">
+              <div class="${exercise.passed ? 'bg-green' : 'bg-dark-pink'} near-white pv3 ph3 w-100 grow pointer mb4">
                 <h1 class="f5">${exercise.name}</h1>
                 <p>${exercise.matter.summary ? exercise.matter.summary : 'A cool exercise!'}</p>
               </div>
