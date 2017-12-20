@@ -21,7 +21,6 @@ class WQ {
     this.firstTime = false
     let storagePath = path.join((process.env.HOME || process.env.USERPROFILE), '.webquest')
     mkdirp.sync(storagePath)
-    this.globalStorage = level(path.join(storagePath, 'webquest'))
     this.appStorage = level(path.join(storagePath, this.opts.name))
 
     this.appStorage.get('userDir')
