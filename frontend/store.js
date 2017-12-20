@@ -96,6 +96,8 @@ function registerEmitters (state, emitter) {
     fetch(`/api/verify?exercise=${name}&file=${file}`)
       .then(res => res.json())
       .then(json => {
+        var index = state.exercises.findIndex(e => e.name === name)
+        state.exercises[index] = Object.assign(state.exercises[index], { passed: JSON.parse(json.success) })
         state.verify.messages = json.messages
         state.verify.success = json.success
         state.verify.running = false
