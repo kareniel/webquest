@@ -49,6 +49,7 @@ class WQ {
       })
       .argv
 
+    this.locale = this.argv._[0] || 'en'
     this.runServer()
   }
 
