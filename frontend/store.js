@@ -102,7 +102,7 @@ function registerEmitters (state, emitter) {
         var index = state.exercises.findIndex(e => e.name === name)
         state.exercises[index] = Object.assign(state.exercises[index], { passed: JSON.parse(json.success) })
         state.verify.messages = json.messages
-        state.verify.success = json.success
+        state.verify.success = JSON.parse(json.success)
         state.verify.running = false
         state.verify.done = true
         emitter.emit(state.events.RENDER)
