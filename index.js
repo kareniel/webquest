@@ -5,18 +5,25 @@ const path = require('path')
 
 class WQ {
   constructor (opts = {}) {
-    opts.pkg = require(path.join(process.cwd(), 'package.json'))
+    if (opts.appDir) {
+      opts.appDir = path.join(opts.appDir, '.')
+    } else {
+      opts.appDir = process.cwd()
+    }
+
+    opts.pkg = require(path.join(opts.appDir, 'package.json'))
 
     if (!opts.name) {
       opts.name = opts.pkg.name
     }
     if (!opts.exerciseDir) {
-      opts.exerciseDir = path.join(process.cwd(), 'exercises')
+      opts.exerciseDir = path.join(opts.appDir, 'exercises')
     }
     opts.version = opts.pkg.version
     opts.dir = __dirname
 
     this.opts = opts
+    this.loadI18n()
     this.exercises = this.opts.exercises || []
     this.firstTime = false
     let storagePath = path.join((process.env.HOME || process.env.USERPROFILE), '.webquest')
@@ -29,6 +36,12 @@ class WQ {
           this.firstTime = true
         }
       })
+    
+    this.appStorage.get('locale')
+      .then(locale => {
+        this.locale = locale
+      })
+      .catch(err => {})
   }
 
   async addExercise (exercise) {
@@ -56,12 +69,12 @@ class WQ {
   }
 
   cleanup () {
-    this.globalStorage.close()
     this.appStorage.close()
   }
 }
 
 WQ.prototype.runServer = require('./lib/server')
 WQ.prototype.loadExercise = require('./lib/loadExercise')
+WQ.prototype.loadI18n = require('./lib/loadI18n')
 
 module.exports = opts => new WQ(opts)
