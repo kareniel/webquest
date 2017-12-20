@@ -1,7 +1,7 @@
 {
   "name": "webquest",
-  "version": "0.0.1",
-  "description": "questing for the interweb",
+  "version": "0.1.0",
+  "description": "interactive coding workshops in the browser",
   "main": "index.js",
   "scripts": {
     "test": "standard | snazzy"
