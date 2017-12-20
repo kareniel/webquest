@@ -14,7 +14,8 @@ module.exports = function (state, emitter) {
       running: false,
       done: false,
       messages: [],
-      success: false
+      success: false,
+      mode: 'verify'
     }
   })
 
@@ -26,7 +27,8 @@ module.exports = function (state, emitter) {
     CLEARSELECTEDFILE: 'clearSelectedFile',
     VERIFY: 'verify',
     RESETVERIFY: 'resetVerify',
-    RESETMESSAGES: 'resetMessages'
+    RESETMESSAGES: 'resetMessages',
+    RUN: 'run'
   })
 
   emitter.on(state.events.DOMCONTENTLOADED, function () {
@@ -92,6 +94,7 @@ function registerEmitters (state, emitter) {
     var name = args[0]
     var file = args[1]
     state.verify.running = true
+    state.verify.mode = 'verify'
     emitter.emit(state.events.RENDER)
     fetch(`/api/verify?exercise=${name}&file=${file}`)
       .then(res => res.json())
@@ -112,8 +115,25 @@ function registerEmitters (state, emitter) {
       running: false,
       done: false,
       messages: [],
-      success: false
+      success: false,
+      mode: 'verify'
     }
+  })
+
+  emitter.on(state.events.RUN, function (args) {
+    var name = args[0]
+    var file = args[1]
+    state.verify.running = true
+    state.verify.mode = 'run'
+    emitter.emit(state.events.RENDER)
+    fetch(`/api/run?exercise=${name}&file=${file}`)
+      .then(res => res.json())
+      .then(json => {
+        state.verify.messages = json.messages
+        state.verify.running = false
+        state.verify.done = true
+        emitter.emit(state.events.RENDER)
+      })
   })
 
   emitter.on(state.events.RESETMESSAGES, function () {

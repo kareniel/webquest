@@ -23,7 +23,11 @@ module.exports = function (state, emit) {
     }
 
     function onRunClick () {
-
+      var ex = state.exercises.find(function (e) {
+        return e.slug === state.params.slug
+      })
+      emit(state.events.RESETMESSAGES)
+      emit(state.events.RUN, [ex.name, state.verify.file])
     }
 
     function onBackClick () {
@@ -61,10 +65,12 @@ module.exports = function (state, emit) {
       `
     } else if (state.verify.running || state.verify.done) {
       var statusMessage
-      if (state.verify.success) {
-        statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 green">You passed this exercise!</b>`
-      } else {
-        statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 red">You failed this exercise...</b>`
+      if (state.verify.mode === 'verify') {
+        if (state.verify.success) {
+          statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 green">You passed this exercise!</b>`
+        } else {
+          statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 red">You failed this exercise...</b>`
+        }
       }
       component = html`
         <div>
@@ -80,8 +86,13 @@ module.exports = function (state, emit) {
           ${statusMessage}
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer mr3" 
-            onclick=${onVerifyClick}>
-            verify again
+            onclick=${state.verify.mode === 'verify' ? onVerifyClick : onRunClick}>
+            ${state.verify.mode} again
+          </a>
+          <a 
+            class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer mr3" 
+            onclick=${state.verify.mode === 'verify' ? onRunClick : onVerifyClick}>
+            ${state.verify.mode === 'verify' ? 'run' : 'verify'} instead
           </a>
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer" 
