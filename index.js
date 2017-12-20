@@ -43,7 +43,9 @@ class WQ {
 
   execute (args) {
     this.argv = yargs(args)
-      .option('t', {
+      .usage('Usage: $0 [locale]')
+      .option('n', {
+        alias: 'no-tab',
         boolean: true,
         describe: `don't automatically open a browser tab`
       })
