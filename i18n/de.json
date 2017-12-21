@@ -1,0 +1,30 @@
+{
+  "webquest": {
+    "internal": {
+      "serverStarted": "Willkommen bei {{name}}!\nWir haben automatisch diese Questline in\ndeinem Web-Browser geöffnet. Falls du das Fenster\nausversehen zu machst, kannst du immer mit\n{{url}} damit zugreifen.\n\nUm {{name}} zu beenden, gib Ctrl+C ein."
+    },
+    "root": {
+      "changeLocale": "sprache ändern",
+      "userDirectory": "Benutzerverzeichnis",
+      "descriptionPlaceholder": "Eine lustige Aufgabe!"
+    },
+    "setUserDir": {
+      "welcome": "Willkommen zu {{name}}! Bevor wir anfangen können, musst du dein Aufgabenverzeichnis eintragen. Das ist das Verzeichnis, wo du die Lösungen der einzenlnen Aufgaben reintust. Es wird empfohlen, ein neues Verzeichnis spezifisch für diese Questline anzulegen. Nenne es doch zum Beispiel <span class='b'>{{slug}}_loesungen</span>!",
+      "useButton": "benutze dieses verzeichnis"
+    },
+    "verify": {
+      "change": "change",
+      "selected": " ausgewählt",
+      "verify": "verifizieren",
+      "run": "laufen lassen",
+      "passMessage": "Du hast diese Aufgabe erfolgreich bestanden!",
+      "failMessage": "Leider fehlgeschlagen!",
+      "again": "nochmal {{action}}",
+      "instead": "lieber {{action}}",
+      "backToOverview": "zurück zur aufgabenübersicht"
+    },
+    "viewExercise": {
+      "runOrVerify": "laufen oder verifizieren lassen"
+    }
+  }
+}
