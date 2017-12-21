@@ -1,3 +1,7 @@
 {
-
+  "webquest": {
+    "internal": {
+      "serverStarted": "Welcome to {{name}}!\nWe have automatically opened the questline in your\nbrowser. If you accidentally close it, just type in\n{{url}}.\n\nTo quit {{name}}, just type Ctrl+C."
+    }
+  }
 }

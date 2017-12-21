@@ -23,7 +23,6 @@ class WQ {
     opts.dir = __dirname
 
     this.opts = opts
-    this.loadI18n()
     this.exercises = this.opts.exercises || []
     this.firstTime = false
     let storagePath = path.join((process.env.HOME || process.env.USERPROFILE), '.webquest')
@@ -41,7 +40,9 @@ class WQ {
       .then(locale => {
         this.locale = locale
       })
-      .catch(err => {})
+      .catch(err => {
+        this.locale = 'en'
+      })
   }
 
   async addExercise (exercise) {
@@ -64,7 +65,10 @@ class WQ {
       })
       .argv
 
-    this.locale = this.argv._[0] || 'en'
+    if (!this.locale) {
+      this.locale = this.argv._[0] || 'en'
+    }
+    this.loadI18n()
     this.runServer()
   }
 
