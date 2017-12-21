@@ -1,5 +1,10 @@
 var html = require('choo/html')
+var mustache = require('mustache')
 var path = require('path')
+
+module.exports.r = function (template, replacements) {
+  return mustache.render(template || '', replacements)
+}
 
 module.exports.ls = function ls (state, emit, dirsonly) {
   function onclick (e) {

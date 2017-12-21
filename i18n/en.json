@@ -2,6 +2,29 @@
   "webquest": {
     "internal": {
       "serverStarted": "Welcome to {{name}}!\nWe have automatically opened the questline in your\nbrowser. If you accidentally close it, just type in\n{{url}}.\n\nTo quit {{name}}, just type Ctrl+C."
+    },
+    "root": {
+      "changeLocale": "change locale",
+      "userDirectory": "User directory",
+      "descriptionPlaceholder": "A cool exercise!"
+    },
+    "setUserDir": {
+      "welcome": "Welcome to {{name}}! Before we can get started, you need to set the directory from which you want to complete the exercises. This can be any directory, but it's recommended to make a new one specifically for this questline, for example called <span class='b'>{{slug}}_solutions</span>.",
+      "useButton": "use this directory"
+    },
+    "verify": {
+      "change": "change",
+      "selected": " selected",
+      "verify": "verify",
+      "run": "run",
+      "passMessage": "You passed this exercise!",
+      "failMessage": "You failed this exercise...",
+      "again": "{{action}} again",
+      "instead": "{{action}} instead",
+      "backToOverview": "back to exercise overview"
+    },
+    "viewExercise": {
+      "runOrVerify": "run or verify"
     }
   }
 }

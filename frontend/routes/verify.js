@@ -1,7 +1,7 @@
 var html = require('choo/html')
 var raw = require('choo/html/raw')
 var path = require('path')
-var ls = require('../common').ls
+var c = require('../common')
 var view = require('../view')
 
 module.exports = function (state, emit) {
@@ -34,11 +34,12 @@ module.exports = function (state, emit) {
       emit(state.events.PUSHSTATE, '/')
     }
 
-    var title = `verify or run ${exercise.name}`
+    var title = `run or verify ${exercise.name}`
     if (title !== state.title) {
       emit(state.events.RESETVERIFY)
       emit(state.events.SETCURRENTDIR, state.userDir)
       emit(state.events.REFRESHDIRS, [state.currentDir, false])
+      emit(state.events.FETCHTRANSLATIONS, 'verify')
       emit(state.events.DOMTITLECHANGE, title)
     }
 
@@ -48,18 +49,18 @@ module.exports = function (state, emit) {
         <div>
           <div class="f1">
             <pre class="dib">${path.basename(state.verify.file)}</pre>
-            selected
-            <small class="f5">(<a href="#" class="link blue" onclick=${onResetClick}>change</a>)</small>
+            ${state.translations['selected']}
+            <small class="f5">(<a href="#" class="link blue" onclick=${onResetClick}>${state.translations['change']}</a>)</small>
           </div>
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer mr3" 
             onclick=${onVerifyClick}>
-            verify
+            ${state.translations['verify']}
           </a>
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer" 
             onclick=${onRunClick}>
-            run
+            ${state.translations['run']}
           </a>
         </div>
       `
@@ -67,9 +68,9 @@ module.exports = function (state, emit) {
       var statusMessage
       if (state.verify.mode === 'verify') {
         if (state.verify.success) {
-          statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 green">You passed this exercise!</b>`
+          statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 green">${state.translations['passMessage']}</b>`
         } else {
-          statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 red">You failed this exercise...</b>`
+          statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 red">${state.translations['failMessage']}</b>`
         }
       }
       component = html`
@@ -87,22 +88,22 @@ module.exports = function (state, emit) {
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer mr3" 
             onclick=${state.verify.mode === 'verify' ? onVerifyClick : onRunClick}>
-            ${state.verify.mode} again
+            ${c.r(state.translations['again'], { action: state.verify.mode === 'verify' ? state.translations['verify'] : state.translations['run'] })}
           </a>
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer mr3" 
             onclick=${state.verify.mode === 'verify' ? onRunClick : onVerifyClick}>
-            ${state.verify.mode === 'verify' ? 'run' : 'verify'} instead
+            ${c.r(state.translations['instead'], { action: state.verify.mode === 'verify' ? state.translations['run'] : state.translations['verify'] })}
           </a>
           <a 
             class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer" 
             onclick=${onBackClick}>
-            back to exercise overview
+            ${state.translations['backToOverview']}
           </a>
         </div>
       `
     } else {
-      component = ls(state, emit, false)
+      component = c.ls(state, emit, false)
     }
 
     return html`

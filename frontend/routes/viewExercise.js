@@ -11,7 +11,10 @@ module.exports = function (state, emit) {
     var exercise = state.exercises.find(function (e) {
       return e.slug === state.params.slug
     })
-    if (exercise.name !== state.title) emit(state.events.DOMTITLECHANGE, exercise.name)
+    if (exercise.name !== state.title) {
+      emit(state.events.FETCHTRANSLATIONS, 'viewExercise')
+      emit(state.events.DOMTITLECHANGE, exercise.name)
+    }
 
     return html`
       <body class="sans-serif mv4 mh5 mw7">
@@ -20,7 +23,7 @@ module.exports = function (state, emit) {
         <a 
           class="f5 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer" 
           onclick=${onclick}>
-          run or verify
+          ${state.translations['runOrVerify']}
         </a>
       </body>
     `

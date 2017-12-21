@@ -9,6 +9,7 @@ module.exports = function (state, emitter) {
     fileList: [],
     currentDir: '',
     userDir: '',
+    translations: {},
     verify: {
       file: '',
       running: false,
@@ -28,7 +29,8 @@ module.exports = function (state, emitter) {
     VERIFY: 'verify',
     RESETVERIFY: 'resetVerify',
     RESETMESSAGES: 'resetMessages',
-    RUN: 'run'
+    RUN: 'run',
+    FETCHTRANSLATIONS: 'fetchTranslations'
   })
 
   emitter.on(state.events.DOMCONTENTLOADED, function () {
@@ -140,5 +142,14 @@ function registerEmitters (state, emitter) {
     state.verify.messages = []
     state.verify.success = false
     state.verify.done = false
+  })
+
+  emitter.on(state.events.FETCHTRANSLATIONS, function (name) {
+    fetch(`/api/fetchTranslations?name=${name}`)
+      .then(res => res.json())
+      .then(json => {
+        state.translations = json
+        emitter.emit(state.events.RENDER)
+      })
   })
 }
