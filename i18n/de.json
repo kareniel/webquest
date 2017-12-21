@@ -25,6 +25,10 @@
     },
     "viewExercise": {
       "runOrVerify": "laufen oder verifizieren lassen"
+    },
+    "setLocale": {
+      "header": "sprache ändern",
+      "success": "Die Sprache wurde erfolgreich geändert! Um die Änderungen zu übernehmen, musst du diese Questline von der Kommandozeile aus neu starten und diesen Browser-Tab neu laden oder neu öffnen!"
     }
   }
 }

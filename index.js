@@ -35,14 +35,6 @@ class WQ {
           this.firstTime = true
         }
       })
-    
-    this.appStorage.get('locale')
-      .then(locale => {
-        this.locale = locale
-      })
-      .catch(err => {
-        this.locale = 'en'
-      })
   }
 
   async addExercise (exercise) {
@@ -65,11 +57,17 @@ class WQ {
       })
       .argv
 
-    if (!this.locale) {
-      this.locale = this.argv._[0] || 'en'
-    }
-    this.loadI18n()
-    this.runServer()
+    this.appStorage.get('locale')
+      .then(locale => {
+        this.locale = locale
+        this.loadI18n()
+        this.runServer()
+      })
+      .catch(err => {
+        this.locale = this.argv._[0] || 'en'
+        this.loadI18n()
+        this.runServer()  
+      })
   }
 
   cleanup () {

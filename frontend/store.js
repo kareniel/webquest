@@ -17,7 +17,8 @@ module.exports = function (state, emitter) {
       messages: [],
       success: false,
       mode: 'verify'
-    }
+    },
+    localeChanged: false
   })
 
   state.events = Object.assign(state.events, {
@@ -30,7 +31,8 @@ module.exports = function (state, emitter) {
     RESETVERIFY: 'resetVerify',
     RESETMESSAGES: 'resetMessages',
     RUN: 'run',
-    FETCHTRANSLATIONS: 'fetchTranslations'
+    FETCHTRANSLATIONS: 'fetchTranslations',
+    SETLOCALE: 'setLocale'
   })
 
   emitter.on(state.events.DOMCONTENTLOADED, function () {
@@ -149,6 +151,14 @@ function registerEmitters (state, emitter) {
       .then(res => res.json())
       .then(json => {
         state.translations = json
+        emitter.emit(state.events.RENDER)
+      })
+  })
+
+  emitter.on(state.events.SETLOCALE, function (locale) {
+    fetch(`/api/setLocale?locale=${locale}`)
+      .then(() => {
+        state.localeChanged = true
         emitter.emit(state.events.RENDER)
       })
   })

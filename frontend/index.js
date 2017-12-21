@@ -14,5 +14,6 @@ app.route('/', require('./routes/root'))
 app.route('/:slug', require('./routes/viewExercise'))
 app.route('/:slug/verify', require('./routes/verify'))
 app.route('/setuserdir', require('./routes/setUserDir'))
+app.route('/setlocale', require('./routes/setLocale'))
 
 app.mount('body')
