@@ -19,7 +19,7 @@ module.exports = function (state, emit) {
     return html`
       <body class="sans-serif mv4 mh5">
         <p class="lh-copy measure">
-          ${raw(c.r(state.translations['welcome'] || '', { name: state.opts.name, slug: slugify(state.opts.name) }))}
+          ${raw(c.r(state.translations['welcome'], { name: state.opts.name, slug: slugify(state.opts.name) }))}
         </p>
         ${c.ls(state, emit, true)}
         <a class="f6 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue pointer" onclick=${onclick}>${state.translations['useButton']}</a>
