@@ -3,6 +3,8 @@ const level = require('level')
 const mkdirp = require('mkdirp')
 const path = require('path')
 
+const availableLocales = require('./availableLocales.json')
+
 class WQ {
   constructor (opts = {}) {
     if (opts.appDir) {
@@ -58,6 +60,10 @@ class WQ {
       .argv
 
     if (this.argv._[0]) {
+      if (!availableLocales.find(e => e === this.argv._[0])) {
+        console.log(`Please input a valid locale name.`)
+        process.exit(0)
+      }
       this.appStorage.put('locale', this.argv._[0])
         .then(() => {
           this.locale = this.argv._[0]
