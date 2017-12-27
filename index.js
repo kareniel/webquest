@@ -3,6 +3,8 @@ const level = require('level')
 const mkdirp = require('mkdirp')
 const path = require('path')
 
+const availableLocales = require('./availableLocales.json')
+
 class WQ {
   constructor (opts = {}) {
     if (opts.appDir) {
@@ -55,19 +57,45 @@ class WQ {
         boolean: true,
         describe: `don't automatically open a browser tab`
       })
+      .option('r', {
+        alias: 'reset-locale',
+        boolean: true,
+        describe: `reset the locale back to english`
+      })
       .argv
 
-    this.appStorage.get('locale')
-      .then(locale => {
-        this.locale = locale
-        this.loadI18n()
-        this.runServer()
-      })
-      .catch(err => {
-        this.locale = this.argv._[0] || 'en'
-        this.loadI18n()
-        this.runServer()  
-      })
+    if (this.argv._[0]) {
+      if (!availableLocales.find(e => e === this.argv._[0])) {
+        console.log(`Please input a valid locale name.`)
+        process.exit(0)
+      }
+      if (this.argv.r) {
+        this.argv._[0] = 'en'
+      }
+
+      this.appStorage.put('locale', this.argv._[0])
+        .then(() => {
+          this.locale = this.argv._[0]
+          this.loadI18n()
+          this.runServer()
+        })
+    } else {
+      this.appStorage.get('locale')
+        .then(locale => {
+          if (this.argv.r) {
+            locale = 'en'
+          }
+
+          this.locale = locale
+          this.loadI18n()
+          this.runServer()
+        })
+        .catch(err => {
+          this.locale = 'en'
+          this.loadI18n()
+          this.runServer()  
+        })
+    }
   }
 
   cleanup () {
