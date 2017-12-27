@@ -57,6 +57,11 @@ class WQ {
         boolean: true,
         describe: `don't automatically open a browser tab`
       })
+      .option('r', {
+        alias: 'reset-locale',
+        boolean: true,
+        describe: `reset the locale back to english`
+      })
       .argv
 
     if (this.argv._[0]) {
@@ -64,6 +69,10 @@ class WQ {
         console.log(`Please input a valid locale name.`)
         process.exit(0)
       }
+      if (this.argv.r) {
+        this.argv._[0] = 'en'
+      }
+
       this.appStorage.put('locale', this.argv._[0])
         .then(() => {
           this.locale = this.argv._[0]
@@ -73,6 +82,10 @@ class WQ {
     } else {
       this.appStorage.get('locale')
         .then(locale => {
+          if (this.argv.r) {
+            locale = 'en'
+          }
+
           this.locale = locale
           this.loadI18n()
           this.runServer()
