@@ -57,17 +57,26 @@ class WQ {
       })
       .argv
 
-    this.appStorage.get('locale')
-      .then(locale => {
-        this.locale = this.argv._[0] || locale
-        this.loadI18n()
-        this.runServer()
-      })
-      .catch(err => {
-        this.locale = this.argv._[0] || 'en'
-        this.loadI18n()
-        this.runServer()  
-      })
+    if (this.argv._[0]) {
+      this.appStorage.put('locale', this.argv._[0])
+        .then(() => {
+          this.locale = this.argv._[0]
+          this.loadI18n()
+          this.runServer()
+        })
+    } else {
+      this.appStorage.get('locale')
+        .then(locale => {
+          this.locale = locale
+          this.loadI18n()
+          this.runServer()
+        })
+        .catch(err => {
+          this.locale = 'en'
+          this.loadI18n()
+          this.runServer()  
+        })
+    }
   }
 
   cleanup () {
