@@ -59,7 +59,7 @@ class WQ {
 
     this.appStorage.get('locale')
       .then(locale => {
-        this.locale = locale
+        this.locale = this.argv._[0] || locale
         this.loadI18n()
         this.runServer()
       })
