@@ -17,7 +17,7 @@ module.exports = function (state, emit) {
       emit(state.events.DOMTITLECHANGE, title)
     }
     return html`
-      <body class="sans-serif mv4 mh5">
+      <body class="sans-serif mv4 mh5 w-30-l w-70">
         <p class="lh-copy measure">
           ${raw(c.r(state.translations['welcome'], { name: state.opts.name, slug: slugify(state.opts.name) }))}
         </p>

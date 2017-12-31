@@ -11,7 +11,7 @@ module.exports = function (state, emit) {
       emit(state.events.DOMTITLECHANGE, title)
     }
     return html`
-      <body class="sans-serif mv4 mh5 w-30">
+      <body class="sans-serif mv4 mh5 w-30-l w-70">
         <h1 class="f1 mb1">${state.opts.name}</h1>
         <p class="lh-copy measure">
           <div class="f3 dib v-mid">${flag(locale)}</div>
