@@ -3,7 +3,7 @@
 </h1>
 
 <div align="center">
-  a workshopper framework for the browser
+  interactive coding workshops in the browser
 </div>
 
 <div align="center">
