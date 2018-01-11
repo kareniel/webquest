@@ -63,6 +63,11 @@ class WQ {
         boolean: true,
         describe: `reset the locale back to english`
       })
+      .option('q', {
+        alias: 'no-quiet',
+        boolean: true,
+        describe: `output more information about compilation`
+      })
       .argv
 
     if (this.argv._[0]) {
