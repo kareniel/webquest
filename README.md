@@ -10,7 +10,7 @@
   <img src="https://i.imgur.com/guaXdLG.png" alt="demonstration of the webquest interface" width=700>
 </div>
 
-webquest is a __framework__ for creating interactive workshops, called __Questlines__ that can be run completely in the browser. It borrows a lot from a [nodeschool workshopper](http://nodeschool.io/#workshopper-list), but is aimed at running in thw browser, therefore removing the requirement to be familiar with the command line. Additionally, the tools used to build nodeschool workshoppers are outdated, something that webquest aims to modernize.
+webquest is a __framework__ for creating interactive workshops, called __Questlines__ that can be run completely in the browser. They borrow a lot from a [nodeschool workshopper](http://nodeschool.io/#workshopper-list), but is aimed at running in the browser, therefore removing the requirement to be familiar with the command line. Additionally, the tools used to build nodeschool workshoppers are outdated, something that webquest aims to modernize.
 
 ## Installation
 
@@ -78,7 +78,7 @@ exercise.addProcessor(async function () {
 module.exports = exercise
 ```
 
-This code uses [questmap](https://github.com/questline/questmap), which helps you verify and run exercises. We won't go over how it all works here, for that, please read the `questmap` docs, but basically `this.log` prints out a message to the user and `this.end` ends the exercise. If `this.error` hasn't been called before, the exercise automatically passes, else, it fails.
+This code uses [questmap](https://github.com/questline/questmap), which helps you verify and run exercises. We won't go over how it all works here, for that, please read the `questmap` docs, but basically `this.log` prints out a message to the user and `this.end` ends the exercise. If `this.error` hasn't been called before, the exercise automatically passes, else, it fails. Also, every `addProcessor`, etc. function has to be an async function, or else everything pretty much falls apart.
 
 Now, we're logging `hello!` here. Let's make sure that can be translated. For that, we'll create a `i18n/en.json` file in your Questline's folder:
 
