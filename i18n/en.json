@@ -32,7 +32,7 @@
     },
     "error": {
       "prefix": "Uh oh!",
-      "noQuestlineTranslations": "No translations for this questline have been found!"
+      "noQuestlineTranslations": "No translations for this questline have been found! Your locale has been set to English temporarily."
     }
   }
 }

@@ -32,7 +32,7 @@
     },
     "error": {
       "prefix": "Oh nein!",
-      "noQuestlineTranslations": "Es konnten keine Übersetzungen für diese Questline gefunden werden!"
+      "noQuestlineTranslations": "Es konnten keine Übersetzungen für diese Questline gefunden werden! Deine Sprache wurde temporär auf Englisch gesetzt."
     }
   }
 }
