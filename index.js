@@ -63,8 +63,8 @@ class WQ {
         boolean: true,
         describe: `reset the locale back to english`
       })
-      .option('q', {
-        alias: 'no-quiet',
+      .option('v', {
+        alias: 'verbose',
         boolean: true,
         describe: `output more information about compilation`
       })
