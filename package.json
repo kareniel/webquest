@@ -15,6 +15,14 @@
     "workshopper",
     "choo"
   ],
+  "files": [
+    "frontend/",
+    "i18n/",
+    "lib/",
+    "index.js",
+    "README.md",
+    "availableLocales.json"
+  ],
   "author": "Olivia Hugger <olivia@fastmail.com>",
   "license": "AGPL-3.0+",
   "bugs": {
