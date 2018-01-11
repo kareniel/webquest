@@ -121,7 +121,7 @@ Just run `node index.js` and everything should work, a browser tab should pop up
 
 This project is a community-owned and maintained project, meaning everyone takes part in caring for its wellbeing. Its current contributors are:
 
-- @pup (Olivia Hugger)
+- [@pup](https://github.com/pup) (Olivia Hugger)
 
 ## License
 
