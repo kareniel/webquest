@@ -117,6 +117,27 @@ Just run `node index.js` and everything should work, a browser tab should pop up
 - Read the [`questmap` docs](https://github.com/questline/questmap#readme) to get a good grasp on writing exercises
 - If there's any inconsistencies or errors in this Readme, [open an issue](https://github.com/questline/webquest/issues/new)!
 
+## `webquest` API
+
+### `webquest(OPTS)` -> `WQ`
+
+Creates a new `WQ` instance. Takes the following options:
+
+- `name`: The Questline name. Required.
+- `appDir`: The directory that the Questline lives in. Required, should be `__dirname`.
+
+### `WQ.addExercise(EXERCISE)` -> Promise
+
+Adds a new Exercise to the `WQ` instance. `EXERCISE` should be the directory name of the Exercise.
+
+### `WQ.addExercises(Array(EXERCISE))` -> Promise
+
+Adds multiple Exercises to the `WQ` instance in the order they're listed in the Array. `EXERCISE` should be the directory name of the Exercise.
+
+### `WQ.execute(ARGS)` -> void
+
+Executes the webquest server. `ARGS` should be command line arguments, minus the first 2 (`process.argv.slice(2)`).
+
 ## Maintainers
 
 This project is a community-owned and maintained project, meaning everyone takes part in caring for its wellbeing. Its current contributors are:
