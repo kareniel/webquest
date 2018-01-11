@@ -25,6 +25,7 @@
     "bankai": "9.0.2",
     "boxen": "1.2.2",
     "choo": "6.6.0",
+    "choo-devtools": "2.3.3",
     "country-emoji": "1.2.0",
     "fs-extra": "4.0.2",
     "get-body": "1.0.2",
@@ -42,7 +43,6 @@
     "yargs": "10.0.3"
   },
   "devDependencies": {
-    "choo-devtools": "2.2.0",
     "snazzy": "7.0.0",
     "standard": "10.0.3"
   }
