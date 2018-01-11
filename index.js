@@ -68,6 +68,11 @@ class WQ {
         boolean: true,
         describe: `output more information about compilation`
       })
+      .option('p', {
+        alias: 'port',
+        boolean: false,
+        describe: `set a custom port`
+      })
       .argv
 
     if (this.argv._[0]) {
