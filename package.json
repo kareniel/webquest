@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/pup/webquest#readme",
   "dependencies": {
-    "bankai": "9.0.2",
+    "bankai": "9.2.0",
     "boxen": "1.2.2",
     "choo": "6.6.0",
     "choo-devtools": "2.3.3",
