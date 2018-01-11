@@ -35,10 +35,10 @@ module.exports = function (state, emit) {
     }
 
     return html`
-      <body class="sans-serif mv4 mh5 w-30-l w-70">
+      <div>
         <h1 class="f1 mb1">${state.translations['header']}</h1>
         ${component}
-      </body>
+      </div>
     `
   })
 }

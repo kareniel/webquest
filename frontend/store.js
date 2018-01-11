@@ -10,6 +10,8 @@ module.exports = function (state, emitter) {
     currentDir: '',
     userDir: '',
     translations: {},
+    errorTranslations: {},
+    errorMessage: '',
     verify: {
       file: '',
       running: false,

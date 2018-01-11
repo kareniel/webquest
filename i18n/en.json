@@ -29,6 +29,10 @@
     "setLocale": {
       "header": "set locale",
       "success": "Your locale has been successfully set! To finalize changing the locale, you have to restart the questline from the command line and reload this tab or open a new one!"
+    },
+    "error": {
+      "prefix": "Uh oh!",
+      "noQuestlineTranslations": "No translations for this questline have been found!"
     }
   }
 }

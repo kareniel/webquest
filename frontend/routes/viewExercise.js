@@ -17,7 +17,7 @@ module.exports = function (state, emit) {
     }
 
     return html`
-      <body class="sans-serif mv4 mh5 mw7 w-30-l w-70">
+      <div>
         <h1 class="f1">${exercise.name}</h1>
         <p class="f4 lh-copy measure">${raw(exercise.problem)}</p>
         <a 
@@ -25,7 +25,7 @@ module.exports = function (state, emit) {
           onclick=${onclick}>
           ${state.translations['runOrVerify']}
         </a>
-      </body>
+      </div>
     `
   })
 }

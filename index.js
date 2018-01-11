@@ -27,6 +27,7 @@ class WQ {
     this.opts = opts
     this.exercises = this.opts.exercises || []
     this.firstTime = false
+    this.errorMessage = ''
     let storagePath = path.join((process.env.HOME || process.env.USERPROFILE), '.webquest')
     mkdirp.sync(storagePath)
     this.appStorage = level(path.join(storagePath, this.opts.name))
