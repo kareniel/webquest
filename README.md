@@ -18,7 +18,7 @@ webquest is a __framework__ for creating interactive workshops, called __Questli
 npm install webquest
 ```
 
-If you're building a Questline, you're likely also going to want to install a library that helps with running your exercises:
+If you're building a Questline (which you very likely are if you're installing the `webquest` package), you're likely also going to want to install a library that helps with running your exercises:
 
 ```sh
 npm install questmap
