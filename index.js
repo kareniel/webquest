@@ -25,7 +25,8 @@ class WQ {
     opts.dir = __dirname
 
     this.opts = opts
-    this.exercises = this.opts.exercises || []
+    this.exerciseNames = []
+    this.exercises = []
     this.firstTime = false
     this.errorMessage = ''
     let storagePath = path.join((process.env.HOME || process.env.USERPROFILE), '.webquest')
@@ -41,13 +42,11 @@ class WQ {
   }
 
   async addExercise (exercise) {
-    await this.loadExercise(exercise)
+    this.exerciseNames.push(exercise)
   }
 
   async addExercises (exercises) {
-    exercises.forEach(async exercise => {
-      await this.loadExercise(exercise)
-    })
+    this.exerciseNames = this.exerciseNames.concat(exercises)
   }
 
   execute (args) {
