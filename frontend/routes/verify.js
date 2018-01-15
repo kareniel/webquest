@@ -66,12 +66,15 @@ module.exports = function (state, emit) {
       `
     } else if (state.verify.running || state.verify.done) {
       var statusMessage
-      if (state.verify.mode === 'verify') {
+      if (state.verify.mode === 'verify' && !state.verify.running) {
         if (state.verify.success) {
           statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 green">${state.translations['passMessage']}</b>`
         } else {
           statusMessage = html`<b class="pa3 pa4-ns db f3 mb1 red">${state.translations['failMessage']}</b>`
         }
+      }
+      if (state.verify.mode === 'verify' && state.verify.running) {
+        statusMessage = html`<b class="pa3 pa4-ns db f3 mb1">${state.translations['runningMessage']}</b>`
       }
       component = html`
         <div>

@@ -19,6 +19,7 @@
       "run": "laufen lassen",
       "passMessage": "Du hast diese Aufgabe erfolgreich bestanden!",
       "failMessage": "Leider fehlgeschlagen!",
+      "runningMessage": "Wird ausgeführt...",
       "again": "nochmal {{action}}",
       "instead": "lieber {{action}}",
       "backToOverview": "zurück zur aufgabenübersicht"

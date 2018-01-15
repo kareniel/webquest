@@ -19,6 +19,7 @@
       "run": "run",
       "passMessage": "You passed this exercise!",
       "failMessage": "You failed this exercise...",
+      "runningMessage": "Running...",
       "again": "{{action}} again",
       "instead": "{{action}} instead",
       "backToOverview": "back to exercise overview"
