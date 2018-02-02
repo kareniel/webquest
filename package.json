@@ -1,6 +1,6 @@
 {
   "name": "webquest",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "interactive coding workshops in the browser",
   "main": "index.js",
   "scripts": {
