@@ -100,10 +100,10 @@ class WQ {
           this.loadI18n()
           this.runServer()
         })
-        .catch(err => {
+        .catch(() => {
           this.locale = 'en'
           this.loadI18n()
-          this.runServer()  
+          this.runServer()
         })
     }
   }

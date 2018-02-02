@@ -36,7 +36,7 @@ module.exports = function (state, emit) {
 
     return html`
       <div>
-        <h1 class="f1 mb1">${state.translations['header']}</h1>
+        <h1 class="f1 mb1">${state.translations['header']}</h1>
         ${component}
       </div>
     `
